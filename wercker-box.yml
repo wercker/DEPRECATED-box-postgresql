@@ -1,5 +1,5 @@
 name: postgresql
-version: 0.0.2
+version: 0.0.3
 inherits: wercker/ubuntu12.04-chef10.18.2@0.0.8
 type : service
 platform : ubuntu@12.04
@@ -8,7 +8,9 @@ keywords:
   - postgresql
 packages :
   - postgresql
-script : sudo chef-solo -c $WERCKER_SOURCE_DIR/solo.rb -j $WERCKER_SOURCE_DIR/solo.json -l debug
+script : |
+  sudo chef-solo -c $WERCKER_SOURCE_DIR/solo.rb -j $WERCKER_SOURCE_DIR/solo.json -l debug
+  sudo apt-get install postgresql-contrib
 env:
   WERCKER_POSTGRESQL_USERNAME: postgres
   WERCKER_POSTGRESQL_PASSWORD: wercker
