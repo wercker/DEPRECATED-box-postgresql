@@ -1,14 +1,14 @@
 name: postgresql
-version: 0.0.3
+version: 0.0.4
 inherits: wercker/ubuntu12.04-chef10.18.2@0.0.8
-type : service
-platform : ubuntu@12.04
-description : postgresql
+type: service
+platform: ubuntu@12.04
+description: postgresql
 keywords:
   - postgresql
-packages :
+packages:
   - postgresql
-script : |
+script: |
   sudo chef-solo -c $WERCKER_SOURCE_DIR/solo.rb -j $WERCKER_SOURCE_DIR/solo.json -l debug
   sudo apt-get install postgresql-contrib
 env:
